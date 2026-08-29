@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Simple music-note glyph, kept within the adaptive icon's safe
+         zone (center 66dp circle of the 108dp canvas, i.e. roughly
+         21-87 on both axes) so it isn't clipped by circular/squircle
+         masks on different launchers. Purple accent (#8B6AE8) matches
+         the reference's premium dark/purple identity. -->
+    <path
+        android:fillColor="#8B6AE8"
+        android:pathData="M64,26 L64,58.5 C61.9,57.1 59.3,56.3 56.5,56.3 C49.1,56.3 43,62 43,69 C43,76 49.1,81.7 56.5,81.7 C63.9,81.7 70,76 70,69 L70,38.5 L76,36.7 L76,26 Z" />
+
+    <path
+        android:fillColor="#5AA6E8"
+        android:fillAlpha="0.55"
+        android:pathData="M56.5,56.3 C59.3,56.3 61.9,57.1 64,58.5 L64,26 L76,26 L76,36.7 L70,38.5 L70,69 C70,70.5 69.7,71.9 69.2,73.2 C68.3,66 62,60.4 54.3,60.4 C53.6,60.4 53,60.4 52.4,60.5 C53.5,57.9 55.5,56.3 56.5,56.3 Z" />
+</vector>

@@ -1,0 +1,15 @@
+<resources>
+    <style name="Theme.MusicPlayer" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#0A0B14</item>
+        <item name="android:navigationBarColor">#0A0B14</item>
+        <item name="android:windowBackground">#0A0B14</item>
+        <!-- Phase 3.5 fix: belt-and-suspenders alongside the Compose-level
+             LocalLayoutDirection override in Theme.kt. This forces LTR
+             at the Android window/decor level too, so nothing native
+             (system-drawn window chrome, IME layout, etc.) picks up
+             mirroring from an RTL system locale before Compose even
+             gets a chance to render. The actual in-app UI mirroring
+             fix lives in Theme.kt; this is a defensive backstop. -->
+        <item name="android:layoutDirection">ltr</item>
+    </style>
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!--
+      Phase 5 (Sleep Timer durability backstop): lets the sleep timer's
+      end action fire via a real AlarmManager alarm even if the app
+      process is killed. This permission is denied by default on
+      Android 13+ (see SleepTimerAlarmScheduler) — the app degrades
+      gracefully to an inexact-but-Doze-aware alarm when it isn't
+      granted, it never crashes or silently drops the timer.
+    -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <application
+        android:name=".MusicPlayerApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.MusicPlayer"
+        android:supportsRtl="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MusicPlayer">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.MusicPlaybackService"
+            android:exported="true"
+            android:foregroundServiceType="mediaPlayback">
+            <intent-filter>
+                <action android:name="androidx.media3.session.MediaSessionService" />
+            </intent-filter>
+        </service>
+
+        <!--
+          Phase 5: receives the AlarmManager-scheduled sleep timer
+          alarm (see SleepTimerAlarmScheduler/SleepTimerAlarmReceiver).
+          Not exported — only this app's own AlarmManager entry should
+          ever be able to trigger it.
+        -->
+        <receiver
+            android:name=".sleeptimer.SleepTimerAlarmReceiver"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
